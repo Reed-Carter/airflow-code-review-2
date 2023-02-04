@@ -16,7 +16,7 @@ VOTES_FILE_NAME = 'votes.csv'
 @task
 def filter_valid_votes():
     """
-    read votes file from a CSV
+    read votes file from a CSV, filters valid votes, and returns a list
 
     This function uses an Airflow FileSystem Connection called "data_fs" as the root folder
     to look for the votes file. Make sure this FileSystem connection exists
@@ -39,7 +39,9 @@ def filter_valid_votes():
 
 @task
 def class_choice(votes: list):
-    
+    """
+    takes a list of ice cream flavors and prints the flavor that is chosen the most.
+    """
     print(mode(votes))
 
 
