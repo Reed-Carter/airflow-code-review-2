@@ -17,9 +17,9 @@
 
 ## Description
 
-This repo demonstrates an automated process using Arflow. A DAG was created to represent the toy tasks that were created to run which can be seen below. 
+This repo demonstrates an automated process which senses if a file is in a folder. If its present, it triggers tasks to read the file, and then select the value that occurs the most in the file. This value is the ice cream flavor that was chosen the most. A DAG was created to represent this process which can be seen below. 
 
-[<img src="images/Code-Review-DAG.png">](images/Code-Review-DAG.png)
+[<img src="images/class_ice_cream_preference.png">](images/class_ice_cream_preference.png)
 
 
 ## Setup/Installation Requirements
@@ -53,6 +53,18 @@ This repo demonstrates an automated process using Arflow. A DAG was created to r
   ```
 * Leave this running, and open a new terminal tab to use the command line.
 * Navigate to http://0.0.0.0:8080/home in your browser and loging as the default user `airflow` with the password also `airflow`. 
+* This code uses a file connection created with Airflow's UI. To do this, follow the following steps:
+  * 1. Navigate to the Airflow Admin > Connections page
+  * 2. Click the + to add a new Connection
+  * 3. Enter the following information and leave the other fields blank:
+        * Connection Id = data_fs
+        * Connection Type = File (path)
+        * Extra = {"path": "/data"}
+  * 4. Click Save
+* The trigger csv file can be downloaded using the following code while in the main project directory:
+  ``` bash
+  gsutil -m cp gs://data.datastack.academy/airflow_cr_2/votes.csv ./data/
+  ```
 
 </br>
 
